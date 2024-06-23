@@ -1,9 +1,7 @@
 package com.example.mailtest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class OtpController {
@@ -17,4 +15,13 @@ public class OtpController {
     public String sendOtp(@RequestParam String email) {
         return otpService.sendOtp(email);
     }
+
+    @PostMapping("/verifyOtp")
+    public String verifyOtp(@RequestBody OtpRequest otpRequest) {
+        System.out.println(otpRequest.getOtp());
+        boolean isValid = otpService.verifyOtp(otpRequest.getEmail(), otpRequest.getOtp());
+        return isValid ? "OTP verified successfully!" : "Invalid OTP!";
+    }
+
+
 }

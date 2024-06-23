@@ -5,6 +5,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Otp {
 
@@ -13,7 +15,8 @@ public class Otp {
     private Long id;
     private String email;
     private String otp;
-    private long expirationtime;
+
+    private LocalDateTime expirationtime;
 
     public Long getId() {
         return id;
@@ -39,11 +42,11 @@ public class Otp {
         this.otp = otp;
     }
 
-    public long getExpirationtime() {
+    public LocalDateTime getExpirationtime() {
         return expirationtime;
     }
 
-    public void setExpirationtime(long expirationtime) {
+    public void setExpirationtime(LocalDateTime expirationtime) {
         this.expirationtime = expirationtime;
     }
 }
